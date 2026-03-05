@@ -1,3 +1,34 @@
+let questions = {};
+let currentQuestion = 0;
+let score = 0;
+let playerName = "";
+let timer;
+let timeLeft = 15;
+let selectedCategory = "";
+let level = 1;
+
+fetch("questions.json")
+  .then(response => response.json())
+  .then(data => {
+    questions = data;
+  });
+
+function startGame() {
+  playerName = document.getElementById("player-name").value;
+  selectedCategory = document.getElementById("category").value;
+  if(!playerName){
+    alert("Por favor ingresa tu nombre");
+    return;
+  }
+
+  document.getElementById("start-screen").classList.add("hidden");
+  document.getElementById("quiz-screen").classList.remove("hidden");
+  currentQuestion = 0;
+  score = 0;
+  level = 1;
+  showQuestions();
+}
+
 function showQuestion() {
   let categoryQuestions = questions[selectedCategory];
 
@@ -99,3 +130,4 @@ function restartGame() {
 function toggleTheme() {
   document.body.classList.toggle("dark-mode");
 }
+
