@@ -26,7 +26,7 @@ function startGame() {
   currentQuestion = 0;
   score = 0;
   level = 1;
-  showQuestions();
+  showQuestion();
 }
 
 function showQuestion() {
@@ -130,4 +130,5 @@ function restartGame() {
 function toggleTheme() {
   document.body.classList.toggle("dark-mode");
 }
+
 
